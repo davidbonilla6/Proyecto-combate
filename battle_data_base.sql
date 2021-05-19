@@ -50,7 +50,7 @@ CREATE TABLE weapon (
 --
 
 create table race (
-race_id integer primary key,
+race_id integer primary key auto_increment,
 race_name varchar(200) not null,
 health int not null,
 power int not null,
@@ -65,7 +65,7 @@ points int  not null
 --
 
 CREATE TABLE warriors (
-  warrior_id integer PRIMARY KEY,
+  warrior_id integer PRIMARY KEY auto_increment,
   warrior_name varchar(20) NOT NULL,
   warrior_image_path varchar(100),
   description_warrior varchar(20) NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE warriors (
 --
 
 create table players (
-player_id integer primary key,
+player_id integer primary key auto_increment,
 player_name varchar(200)
 );
 
