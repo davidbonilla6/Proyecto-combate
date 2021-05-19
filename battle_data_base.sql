@@ -87,7 +87,7 @@ player_name varchar(200)
 --
 
 create table ranking (
-players_id integer,
+players_id integer primary key,
 total_points int not null,
 warriors_id integer,
 foreign key (players_id) references players(player_id),
