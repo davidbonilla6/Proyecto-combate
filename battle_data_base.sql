@@ -41,7 +41,7 @@ CREATE TABLE weapon (
   weapon_image_path varchar(100),
   velocity int,
   strength int,
-  utility_by varchar(50) NOT NULL,
+  weapon_race varchar(50) NOT NULL,
   points int not null
 );
 
@@ -79,9 +79,7 @@ CREATE TABLE warriors (
 
 create table players (
 player_id integer primary key,
-player_name varchar(200),
-warrior integer,
-foreign key (warrior) references warriors(warrior_id)
+player_name varchar(200)
 );
 
 --
@@ -117,15 +115,15 @@ foreign key (weapon) references weapon(weapon_id)
 
 
 
-INSERT INTO `weapon` (`weapon_id`, `weapon_name`, `weapon_image_path`, `velocity`, `strength`, `utility_by`, `points`) VALUES
+INSERT INTO `weapon` (`weapon_id`, `weapon_name`, `weapon_image_path`, `velocity`, `strength`, `weapon_race`, `points`) VALUES
 (1, 'dagger', '', 3, 0, 'human, elf', 10),
-(2, 'hatchet', '',0 , 3, 'human, dwarf', 10),
-(3, 'double sword', '', 2, 2, 'human, elf', 14),
+(2, 'axe', '',0 , 3, 'human, dwarf', 10),
+(3, 'doubleSword', '', 2, 2, 'human, elf', 14),
 (4, 'scimitar', '', '2', '1', 'human, elf', 14),
 (5, 'bow', '', 5, 1, 'elf', 15),
 (6, 'katana', '', 3, 2, 'human', 18),
 (7, 'dirk', '', 4, 0, 'human, elf, dwarf', 12),
-(8, 'double hatchet', '', 0, 5, 'dwarf', 20),
+(8, 'doubleAxe', '', 0, 5, 'dwarf', 20),
 (9, 'sword', '', 1, 1, 'human, elf, dwarf', 10);
 INSERT INTO `race` (`race_id`, `race_name`, `health`, `strength`, `speed`, `agility`, `defense`, `points` ) VALUES
 (1, 'elf', 40, 4, 7, 7, 2, 19),
