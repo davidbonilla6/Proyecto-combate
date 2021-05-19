@@ -54,7 +54,7 @@ race_id integer primary key,
 race_name varchar(200) not null,
 health int not null,
 power int not null,
-hability int not null,
+ability int not null,
 speed int not null,
 defense int not null,
 points int  not null
@@ -125,7 +125,7 @@ INSERT INTO `weapon` (`weapon_id`, `weapon_name`, `weapon_image_path`, `power`, 
 (7, 'dirk', '', 0, 4, 'human, elf, dwarf', 12),
 (8, 'doubleAxe', '', 5, 0, 'dwarf', 20),
 (9, 'sword', '', 1, 1, 'human, elf, dwarf', 10);
-INSERT INTO `race` (`race_id`, `race_name`, `health`, `power`, `speed`, `hability`, `defense`, `points` ) VALUES
+INSERT INTO `race` (`race_id`, `race_name`, `health`, `power`, `speed`, `ability`, `defense`, `points` ) VALUES
 (1, 'elf', 40, 4, 7, 7, 2, 19),
 (2, 'human', 50, 5, 5, 6, 3, 20),
 (3, 'dwarf', 60, 6, 3, 	5, 4, 21);
