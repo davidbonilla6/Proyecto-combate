@@ -54,8 +54,8 @@ race_id integer primary key,
 race_name varchar(200) not null,
 health int not null,
 power int not null,
-speed int not null,
 hability int not null,
+speed int not null,
 defense int not null,
 points int  not null
 );
