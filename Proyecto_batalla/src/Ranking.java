@@ -1,20 +1,15 @@
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
-public class WeaponContainer {
-	ArrayList<Weapon> ArrayWeapons=new ArrayList<Weapon>();
-	
-	public WeaponContainer() {
+public class Ranking {
+	public static void main(String[] args) {
 		String url="jdbc:mysql://localhost/battle_data_base?serverTimezone=UTC";
 		String user="root";
 		String password="superlocal";
-		String query="select * from weapon";
+		String query="Select * from ranking";
 		
 		try {
 			//Data Base connection
@@ -23,8 +18,12 @@ public class WeaponContainer {
 			String update="";
 			Statement st;
 			st=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			String query1="select* from players";
+			
+			ResultSet rs2=st.executeQuery(query1);
+			
 			ResultSet rs=st.executeQuery(query);
-			makeArray(rs,ArrayWeapons);		
+			insertarFila(rs);
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			System.out.println("No se ha podido cargar el driver");
@@ -33,20 +32,25 @@ public class WeaponContainer {
 			System.out.println("No se ha podido establecer la conexion");
 		}
 	}
-	
-	public static void makeArray(ResultSet rs,ArrayList ArrayWeapons) {
+	public static void insertarFila(ResultSet rs) {
+		Player p1=new Player(2,""); 
+		Weapon w1=new Weapon(1,"sword","image",1,1,"human",10);
+		Warrior ww1=new Warrior(5,50,5,5,6,3,"JOSE", "img",w1,20);
+		int TotalPoints=40;
 		try {
-			while (rs.next()) {//It takes the data of each weapon and stores it in the Array
-				//Image i=Toolkit.getDefaultToolkit().getImage(rs.getString(3));
-				String i = null;
-				ArrayWeapons.add(new Weapon(rs.getInt(1), rs.getString(2), i,rs.getInt(4),rs.getInt(5),rs.getString(6),rs.getInt(7)));
-			}
+			rs.moveToInsertRow();
+			rs.updateInt(1, 2);
+			rs.updateInt(2, TotalPoints);
+			rs.updateInt(3, ww1.getId());
+			rs.insertRow();
 			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
 	}
+	}
 
-}
+
