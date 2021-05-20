@@ -129,6 +129,19 @@ INSERT INTO `race` (`race_id`, `race_name`, `health`, `power`, `speed`, `ability
 (1, 'elf', 40, 4, 7, 7, 2, 19),
 (2, 'human', 50, 5, 5, 6, 3, 20),
 (3, 'dwarf', 60, 6, 3, 	5, 4, 21);
+insert into `warriors` (`warrior_id`, `warrior_name`, `warrior_image_path`, `description_warrior`, `race`) VALUES
+(1, 'finrod', '', 'the elf king', 1),
+(2, 'legolas', '', 'the eagle eye', 1),
+(3, 'Orodreth', '', 'the violent swordsman', 1),
+(4, 'angrod', '', 'the executioner', 1),
+(5, 'aragorn', '', 'the human king', 2),
+(6, 'anborn', '', 'the dominated human ', 2),
+(7, 'angborn', '', 'the unbeatable warrior ', 2),
+(8, 'gandalf', '', 'the wise', 2),
+(9, 'dwalin', '', 'the dwarf king', 3),
+(10, 'balin', '', 'the dwarf destroyer ', 3),
+(11, 'kili', '', 'the night rider', 3),
+(12, 'fili', '', 'the ruthless hunter ', 3);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
