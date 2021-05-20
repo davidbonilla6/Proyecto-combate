@@ -130,18 +130,18 @@ INSERT INTO `race` (`race_id`, `race_name`, `health`, `power`, `speed`, `ability
 (2, 'human', 50, 5, 5, 6, 3, 20),
 (3, 'dwarf', 60, 6, 3, 	5, 4, 21);
 insert into `warriors` (`warrior_id`, `warrior_name`, `warrior_image_path`, `description_warrior`, `race`) VALUES
-(1, 'finrod', 'images/characters/elf.png', 'the elf king', 1),
-(2, 'legolas', 'images/characters/elf.png', 'the eagle eye', 1),
+(1, 'Finrod', 'images/characters/elf.png', 'the elf king', 1),
+(2, 'Legolas', 'images/characters/elf.png', 'the eagle eye', 1),
 (3, 'Orodreth', 'images/characters/elf.png', 'the violent swordsman', 1),
-(4, 'angrod', 'images/characters/elf.png', 'the executioner', 1),
-(5, 'aragorn', 'images/characters/human.png', 'the human king', 2),
-(6, 'anborn', 'images/characters/human.png', 'the dominated human ', 2),
-(7, 'angborn', 'images/characters/human.png', 'the unbeatable warrior ', 2),
-(8, 'gandalf', 'images/characters/human.png', 'the wise', 2),
-(9, 'dwalin', 'images/characters/dwarf.png', 'the dwarf king', 3),
-(10, 'balin', 'images/characters/dwarf.png', 'the dwarf destroyer ', 3),
-(11, 'kili', 'images/characters/dwarf.png', 'the night rider', 3),
-(12, 'fili', 'images/characters/dwarf.png', 'the ruthless hunter ', 3);
+(4, 'Angrod', 'images/characters/elf.png', 'the executioner', 1),
+(5, 'Aragorn', 'images/characters/human.png', 'the human king', 2),
+(6, 'Anborn', 'images/characters/human.png', 'the dominated human ', 2),
+(7, 'Angborn', 'images/characters/human.png', 'the unbeatable warrior ', 2),
+(8, 'Gandalf', 'images/characters/human.png', 'the wise', 2),
+(9, 'Dwalin', 'images/characters/dwarf.png', 'the dwarf king', 3),
+(10, 'Balin', 'images/characters/dwarf.png', 'the dwarf destroyer ', 3),
+(11, 'Kili', 'images/characters/dwarf.png', 'the night rider', 3),
+(12, 'Fili', 'images/characters/dwarf.png', 'the ruthless hunter ', 3);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
