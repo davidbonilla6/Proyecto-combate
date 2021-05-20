@@ -52,7 +52,7 @@ public class Conection {
 			st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
 			ResultSet rs=st.executeQuery(query);
 			rs.moveToInsertRow();
-			rs.updateInt(1, player.player_id);
+			rs.updateInt(1, player.getPlayer_id());
 			rs.updateInt(2, points);
 			rs.updateInt(3, warrior.getId());
 			rs.insertRow();
@@ -61,5 +61,29 @@ public class Conection {
 			e.printStackTrace();
 		}
 		
+	}
+	public void battle_final_resume(Connection con, int injuries_caused, int injuries_suffered, int battle_points, Weapon weapon_id, Warrior warrior_id, Player player_id, Warrior warrior_enemig, Weapon weapon_enemig) {
+		String query="select * from battles";
+		Statement st;
+		try {
+			st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			ResultSet rs=st.executeQuery(query);
+			int random_id = (int) (Math.random()*10000+1);
+			rs.moveToInsertRow();
+			rs.updateInt(1, random_id);
+			rs.updateInt(2, player_id.getPlayer_id());
+			rs.updateInt(3, warrior_id.getId());
+			rs.updateInt(4, weapon_id.getId());
+			rs.updateInt(5, warrior_enemig.getId());
+			rs.updateInt(6, weapon_enemig.getId());
+			rs.updateInt(7, injuries_caused);
+			rs.updateInt(8, injuries_suffered);
+			rs.updateInt(9, battle_points);
+			rs.insertRow();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
