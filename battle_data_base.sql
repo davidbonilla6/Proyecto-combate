@@ -116,32 +116,32 @@ foreign key (weapon) references weapon(weapon_id)
 
 
 INSERT INTO `weapon` (`weapon_id`, `weapon_name`, `weapon_image_path`, `power`, `speed`, `weapon_race`, `points`) VALUES
-(1, 'dagger', '', 0, 3, 'human, elf', 10),
-(2, 'axe', '',3 , 0, 'human, dwarf', 10),
-(3, 'doubleSword', '', 2, 2, 'human, elf', 14),
-(4, 'scimitar', '', 1, 2, 'human, elf', 14),
-(5, 'bow', '', 1, 5, 'elf', 15),
-(6, 'katana', '', 2, 3, 'human', 18),
-(7, 'dirk', '', 0, 4, 'human, elf, dwarf', 12),
-(8, 'doubleAxe', '', 5, 0, 'dwarf', 20),
-(9, 'sword', '', 1, 1, 'human, elf, dwarf', 10);
+(1, 'dagger', 'images/weapons/dagger.png', 0, 3, 'human, elf', 10),
+(2, 'axe', 'images/weapons/axe.png',3 , 0, 'human, dwarf', 10),
+(3, 'doubleSword', 'images/weapons/doubleSword.png', 2, 2, 'human, elf', 14),
+(4, 'scimitar', 'images/weapons/scimitar.png', 1, 2, 'human, elf', 14),
+(5, 'bow', 'images/weapons/bow.png', 1, 5, 'elf', 15),
+(6, 'katana', 'images/weapons/katana.png', 2, 3, 'human', 18),
+(7, 'dirk', 'images/weapons/dirk.png', 0, 4, 'human, elf, dwarf', 12),
+(8, 'doubleAxe', 'images/weapons/doubleAxe.png', 5, 0, 'dwarf', 20),
+(9, 'sword', 'images/weapons/sword.png', 1, 1, 'human, elf, dwarf', 10);
 INSERT INTO `race` (`race_id`, `race_name`, `health`, `power`, `speed`, `ability`, `defense`, `points` ) VALUES
 (1, 'elf', 40, 4, 7, 7, 2, 19),
 (2, 'human', 50, 5, 5, 6, 3, 20),
 (3, 'dwarf', 60, 6, 3, 	5, 4, 21);
 insert into `warriors` (`warrior_id`, `warrior_name`, `warrior_image_path`, `description_warrior`, `race`) VALUES
-(1, 'finrod', '', 'the elf king', 1),
-(2, 'legolas', '', 'the eagle eye', 1),
-(3, 'Orodreth', '', 'the violent swordsman', 1),
-(4, 'angrod', '', 'the executioner', 1),
-(5, 'aragorn', '', 'the human king', 2),
-(6, 'anborn', '', 'the dominated human ', 2),
-(7, 'angborn', '', 'the unbeatable warrior ', 2),
-(8, 'gandalf', '', 'the wise', 2),
-(9, 'dwalin', '', 'the dwarf king', 3),
-(10, 'balin', '', 'the dwarf destroyer ', 3),
-(11, 'kili', '', 'the night rider', 3),
-(12, 'fili', '', 'the ruthless hunter ', 3);
+(1, 'finrod', 'images/characters/elf.png', 'the elf king', 1),
+(2, 'legolas', 'images/characters/elf.png', 'the eagle eye', 1),
+(3, 'Orodreth', 'images/characters/elf.png', 'the violent swordsman', 1),
+(4, 'angrod', 'images/characters/elf.png', 'the executioner', 1),
+(5, 'aragorn', 'images/characters/human.png', 'the human king', 2),
+(6, 'anborn', 'images/characters/human.png', 'the dominated human ', 2),
+(7, 'angborn', 'images/characters/human.png', 'the unbeatable warrior ', 2),
+(8, 'gandalf', 'images/characters/human.png', 'the wise', 2),
+(9, 'dwalin', 'images/characters/dwarf.png', 'the dwarf king', 3),
+(10, 'balin', 'images/characters/dwarf.png', 'the dwarf destroyer ', 3),
+(11, 'kili', 'images/characters/dwarf.png', 'the night rider', 3),
+(12, 'fili', 'images/characters/dwarf.png', 'the ruthless hunter ', 3);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
