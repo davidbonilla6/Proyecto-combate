@@ -62,7 +62,7 @@ public class Conection {
 		}
 		
 	}
-	public void battle_final_resume(Connection con, int injuries_caused, int injuries_suffered, int battle_points, Weapon weapon_id, Warrior warrior_id, Player player_id, Warrior warrior_enemig, Weapon weapon_enemig) {
+	public void battle_final_resume_save(Connection con, int injuries_caused, int injuries_suffered, int battle_points, Weapon weapon_id, Warrior warrior_id, Player player_id, Warrior warrior_enemig, Weapon weapon_enemig) {
 		String query="select * from battles";
 		Statement st;
 		try {
@@ -81,6 +81,27 @@ public class Conection {
 			rs.updateInt(9, battle_points);
 			rs.insertRow();
 			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void ranking_array_resume(Connection con) {
+		String query="select * from ranking";
+		Statement st;
+		ArrayList ArrayRanking=new ArrayList();
+		try {
+			st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			ResultSet rs=st.executeQuery(query);
+			while (rs.next()) {//It takes the data of each warrior and stores it in the Array
+				//Weapon w=new Weapon(rs.getString(9));
+				//Image i=Toolkit.getDefaultToolkit().getImage(rs.getString(8));
+							
+				ArrayRanking.add(String.valueOf(rs.getInt(1)));
+				ArrayRanking.add(String.valueOf(rs.getInt(2)));
+				ArrayRanking.add(String.valueOf(rs.getInt(3)));
+				
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
