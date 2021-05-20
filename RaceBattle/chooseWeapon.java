@@ -225,7 +225,7 @@ class errorChoosingWeapon extends JDialog {
 		errorimage.setOpaque(false);
 		
 		add(main);
-		setLocation(125, 175);
+		setLocation(225, 225);
 		setSize(250,175);
 		setTitle("ERROR");
 		setResizable(false);
@@ -267,7 +267,7 @@ class errorWeaponDisabled extends JDialog {
 		errorimage.setOpaque(false);
 		
 		add(main);
-		setLocation(125, 175);
+		setLocation(225, 225);
 		setSize(250,175);
 		setTitle("ERROR");
 		setResizable(false);

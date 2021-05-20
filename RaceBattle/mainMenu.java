@@ -15,22 +15,22 @@ public class mainMenu{
 	private JFrame window = new JFrame();
 	private String urlPhoto="images/backgrounds/main.png";
     private JPanel pmain, pbuttons, pbuttonsup, pbuttonsdown, pcurrents;
-	private JButton play, choosepj, choosewp, exit;
+	private JButton play, choosepj, choosewp, exit, ranking;
 	private JLabel fcurrentp, fcurrentw;
 	private String chosenwarriorname="none", chosenweaponname="none";
-	private ImageIcon playimage, chooseWarriorimage, chooseWeaponimage, exitimage;
 	
 	public static void main(String[] args) {
 		new mainMenu();
 	}
 	
-	public mainMenu() {
+	public mainMenu() { //adding JComponents to the main panel and setting the JFrame.
 		initComponentsMain();
 		initButtons();
 		pmain.setLayout(new BorderLayout());
 		
 		pbuttons.setLayout(new BoxLayout(pbuttons, BoxLayout.Y_AXIS));
 		pbuttonsup.add(play);
+		pbuttonsup.add(ranking);
 		pbuttonsup.add(exit);
 		pbuttonsdown.add(choosepj);
 		pbuttonsdown.add(choosewp);
@@ -56,38 +56,41 @@ public class mainMenu{
 		window.add(pmain);
 		
 		
-		play.addActionListener(new ActionListener() { @Override
+		play.addActionListener(new ActionListener() { @Override //If we press "PLAY" button, if we have chosen a weapon then it launches the chooseName class. Else it launches the errorPlaying window.
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (chosenweaponname.equals("none")) {
 					new errorPlaying(window,true);
 				} else {
-					new chooseName(chosenwarriorname, chosenweaponname, window, true);
+					int battlecoins=0, injuries_caused=0, injuries_suffered=0;
+					new chooseName(chosenwarriorname, chosenweaponname, window, true, battlecoins, injuries_caused, injuries_suffered);
+					chosenwarriorname="none";
+					chosenweaponname="none";
+					play.setIcon(new ImageIcon("images/buttons/playDisabled.png"));
+					choosewp.setIcon(new ImageIcon("images/buttons/chooseWeaponDisabled.png"));
+					fcurrentp.setIcon(new ImageIcon("images/characters/nonemain.png"));
+					fcurrentw.setIcon(new ImageIcon("images/weapons/nonemain.png"));
 				}
 			}
 			
 		});
 		
-		choosepj.addActionListener(new ActionListener() { @Override
+		choosepj.addActionListener(new ActionListener() { @Override //Executing the menu to choose a Warrior.
 			public void actionPerformed(ActionEvent e) {
 				chooseWarrior chosenWarrior = new chooseWarrior(window,true);
 				chosenwarriorname=chosenWarrior.getElection();
 				chosenweaponname="none";
-				Icon playdisabledimage =new ImageIcon("images/buttons/playDisabled.png");
-				play.setIcon(playdisabledimage);
-				Icon noneweapon = new ImageIcon("images/weapons/nonemain.png");
-				fcurrentw.setIcon(noneweapon);
+				play.setIcon(new ImageIcon("images/buttons/playDisabled.png"));
+				fcurrentw.setIcon(new ImageIcon("images/weapons/nonemain.png"));
 				if (!chosenwarriorname.equals("none")) {
-					Icon weaponabailableimage =new ImageIcon("images/buttons/chooseWeapon.png");
-					choosewp.setIcon(weaponabailableimage);
-					Icon warriorchosenmain = new ImageIcon("images/characters/"+chosenwarriorname+"main.png");
-					fcurrentp.setIcon(warriorchosenmain);
+					choosewp.setIcon(new ImageIcon("images/buttons/chooseWeapon.png"));
+					fcurrentp.setIcon(new ImageIcon("images/characters/"+chosenwarriorname+"main.png"));
 					
 				}
 			}
 		});
 		
-		choosewp.addActionListener(new ActionListener() { @Override
+		choosewp.addActionListener(new ActionListener() { @Override //Executing the menu for choosing a Weapon if be have chosen a warrior before.
 				public void actionPerformed(ActionEvent e) {
 					if (chosenwarriorname.equals("none")) {
 						new errorChoosingWeapon(window, true);
@@ -95,16 +98,21 @@ public class mainMenu{
 						chooseWeapon chosenWeapon = new chooseWeapon(chosenwarriorname, window, true);
 						chosenweaponname=chosenWeapon.getElection();
 						if (!chosenweaponname.equals("none")) {
-							Icon playabailableimage =new ImageIcon("images/buttons/play.png");
-							play.setIcon(playabailableimage);
-							Icon weaponchosenmain = new ImageIcon("images/weapons/"+chosenweaponname+"main.png");
-							fcurrentw.setIcon(weaponchosenmain);
+							play.setIcon(new ImageIcon("images/buttons/play.png"));
+							fcurrentw.setIcon(new ImageIcon("images/weapons/"+chosenweaponname+"main.png"));
 						}
 					}
 				}
 			});
 		
-		exit.addActionListener(new ActionListener() { @Override
+		ranking.addActionListener(new ActionListener() { @Override //Executing the ranking.
+			public void actionPerformed(ActionEvent e) {
+				new showRanking(window,true);
+			}
+			
+		});
+		
+		exit.addActionListener(new ActionListener() { @Override //Exiting the APP.
 			public void actionPerformed(ActionEvent e) {
 				window.dispose();
 			}
@@ -115,34 +123,31 @@ public class mainMenu{
 		window.setResizable(false);
 		window.setVisible(true);
 	}
-	public void initComponentsMain() {
+	public void initComponentsMain() { // Initializing the components used on main panel.
 		pmain=new ImageComponent(urlPhoto);
 		pbuttons=new JPanel();
 		pbuttonsup=new JPanel();
 		pbuttonsdown=new JPanel();
 		pcurrents=new JPanel();
 		
-		ImageIcon currentpimage = new ImageIcon("images/characters/"+chosenwarriorname+"main.png");
-		fcurrentp=new JLabel(currentpimage);
-		ImageIcon currentwimage = new ImageIcon("images/weapons/"+chosenweaponname+"main.png");
-		fcurrentw=new JLabel(currentwimage);
+		fcurrentp=new JLabel(new ImageIcon("images/characters/"+chosenwarriorname+"main.png"));
+		fcurrentw=new JLabel(new ImageIcon("images/weapons/"+chosenweaponname+"main.png"));
 	}
 	
-	public void initButtons() {
-		playimage = new ImageIcon("images/buttons/playDisabled.png");
-		play=new JButton(playimage);
+	public void initButtons() { // Initializing the buttons used on main panel.
+		ranking = new JButton(new ImageIcon("images/buttons/ranking.png"));
+		ranking.setPreferredSize(new Dimension(150,50));
+		
+		play=new JButton(new ImageIcon("images/buttons/playDisabled.png"));
 		play.setPreferredSize(new Dimension(100, 50));
 		
-		chooseWarriorimage = new ImageIcon("images/buttons/chooseWarrior.png");
-		choosepj=new JButton(chooseWarriorimage);
+		choosepj=new JButton(new ImageIcon("images/buttons/chooseWarrior.png"));
 		choosepj.setPreferredSize(new Dimension(250, 50));
 		
-		chooseWeaponimage = new ImageIcon("images/buttons/chooseWeaponDisabled.png");
-		choosewp=new JButton(chooseWeaponimage);
+		choosewp=new JButton(new ImageIcon("images/buttons/chooseWeaponDisabled.png"));
 		choosewp.setPreferredSize(new Dimension(250, 50));
-		
-		exitimage = new ImageIcon("images/buttons/exit.png");
-		exit=new JButton(exitimage);
+
+		exit=new JButton(new ImageIcon("images/buttons/exit.png"));
 		exit.setPreferredSize(new Dimension(100, 50));
 	}
 	
@@ -156,56 +161,10 @@ public class mainMenu{
 
 }
 
+
+
 @SuppressWarnings("serial")
-/*class AnimationPane extends JPanel {
-
-    private BufferedImage picture;
-    private int xPos = 0;
-    private int direction = 1;
-
-    public AnimationPane(String urlPhoto, int Xorigin, int Xdestiny) {
-        try {
-        	picture = ImageIO.read(new File(urlPhoto));
-            Timer timer = new Timer(40, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    xPos += direction;
-                    if (xPos + picture.getWidth() < Xdestiny) {
-                        xPos = getWidth() - picture.getWidth();
-                        direction *= -1;
-                    } else if (xPos < 0) {
-                        xPos = 0;
-                        direction *= -1;
-                    }
-                    repaint();
-                }
-
-            });
-            timer.setRepeats(true);
-            timer.setCoalesce(true);
-            timer.start();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    @Override
-    public Dimension getPreferredSize() {
-        return picture == null ? super.getPreferredSize() : new Dimension(picture.getWidth() * 4, picture.getHeight());
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        int y = getHeight() - picture.getHeight();
-        g.drawImage(picture, xPos, y, this);
-
-    }
-
-}*/
-
-class ImageComponent extends JPanel{
+class ImageComponent extends JPanel{ // Setting the background of a panel with a large image auto-escalated.
     private BufferedImage image;
     
     ImageComponent(String urlFoto){

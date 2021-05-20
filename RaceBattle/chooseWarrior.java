@@ -20,7 +20,7 @@ class chooseWarrior extends JDialog{
 	private String electedWarrior="none";
 	
 	
-	public chooseWarrior(JFrame j, boolean modal) {
+	public chooseWarrior(JFrame j, boolean modal) { // Initializing and setting the Frame up.
 		super(j,modal);
 		setSize(550,550);
 		setTitle("CHOOSE WARRIOR");
@@ -53,7 +53,7 @@ class chooseWarrior extends JDialog{
         setVisible(true);
 	}
 	
-	public void initComponentsChoosePlayer() {
+	public void initComponentsChoosePlayer() { // Initializing the JComponents used in the choosingWarrior panel.
 		//CHOOSE PLAYER's components.
 		panelChoosingP=new ImageComponent(urlPhoto);
 		
